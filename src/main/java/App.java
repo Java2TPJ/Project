@@ -1,7 +1,14 @@
 import view.MainView;
+import data.Data;
+import model.*;
 public class App {
     public static void main(String[] args) {
         MainView mainView = new MainView();
+        Data data = new Data();
+
+        // 데이터 저장소 초기화
+        data.setInitData();
+
         try {
             mainView.displayView();
         } catch (Exception e) {
