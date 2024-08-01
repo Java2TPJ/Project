@@ -1,7 +1,16 @@
 package view;
+import data.Data;
+
 import java.util.*;
+import data.Data;
 public class StudentView implements View{
+
+    private Data data;
     Scanner sc = new Scanner(System.in);
+
+    public StudentView(Data data) {
+        this.data = data;
+    }
     @Override
     public void displayView() {
         boolean flag = true;
