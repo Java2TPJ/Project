@@ -9,6 +9,12 @@ public class App {
         // 데이터 저장소 초기화
         data.setInitData();
 
+        // 데이터 저장소 확인용 (추후 삭제 예정)
+//        System.out.println("과목 리스트:");
+//        for (Subject subject : data.getSubjects()) {
+//            System.out.println("과목명: " + subject.getSubjectName() + ", 과목 타입: " + subject.getSubjectType());
+//        }
+
         try {
             mainView.displayView();
         } catch (Exception e) {

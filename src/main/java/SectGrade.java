@@ -1,7 +1,6 @@
 public class SectGrade {
     public char SectGrade(int Score) {
         char Grade;
-
         if ((Score >= 90) && (Score <= 100)) {
             Grade = 'A';
             return Grade;
