@@ -1,10 +1,17 @@
 package view;
 import java.util.*;
+import data.Data;
 public class MainView implements View{
+    private Data data;
+    private Scanner sc = new Scanner(System.in);
+    private ScoreView scoreView;
+    private StudentView studentView;
 
-    Scanner sc = new Scanner(System.in);
-    ScoreView scoreView = new ScoreView();
-    StudentView studentView = new StudentView();
+    public MainView(Data data) {
+        this.data = data;
+        this.scoreView = new ScoreView(data); // Data 객체를 전달
+        this.studentView = new StudentView(data);
+    }
 
     @Override
     public void displayView() {
@@ -20,9 +27,7 @@ public class MainView implements View{
             int i = sc.nextInt();
 
             switch (i) {
-                case 1 -> { // 수강생 관리
-                    studentView.displayView();
-                }
+                case 1 -> studentView.displayView();
                 case 2 -> scoreView.displayView(); // 점수 관리
                 case 3 -> flag = false; // 프로그램 종료
             }
