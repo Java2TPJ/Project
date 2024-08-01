@@ -43,5 +43,19 @@ public class StudentTest {
             System.out.println();
             System.out.println();
         }
+
+        for (Student student : students) {
+            if (student.getStudentName().equals("박지훈")) {
+                System.out.println("박지훈의 정보");
+                System.out.println("학생 ID: " + student.getStudentId());
+                System.out.println("학생 이름: " + student.getStudentName());
+                System.out.print("등록 과목:");
+                for (Subject subject : student.getStudentSubjects()) {
+                    System.out.print(" " + subject.getSubjectName());
+                }
+                System.out.println();
+                System.out.println();
+            }
+        }
     }
 }

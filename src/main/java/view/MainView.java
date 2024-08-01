@@ -6,7 +6,6 @@ public class MainView implements View{
     ScoreView scoreView = new ScoreView();
     StudentView studentView = new StudentView();
 
-
     @Override
     public void displayView() {
         boolean flag = true;
