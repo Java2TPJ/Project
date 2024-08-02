@@ -45,7 +45,7 @@ public class Data {
         students.add(student);
     }
 
-    // 이름으로 Subject 객체 가져오기
+    // 테스트용, 추후 변경해야할듯 이름으로 Subject 객체 가져오기
     private Subject getSubjectByName(String name) {
         for (Subject subject : subjects) {
             if (subject.getSubjectName().equals(name)) {
@@ -119,8 +119,20 @@ public class Data {
     public void printStudents() {
         System.out.println("현재 저장된 학생 목록:");
         for (Student student : students) {
-            System.out.println("학생 이름: " + student.getStudentName() +
+            System.out.println("학생번호: "+student.getStudentId()+
+                    " 학생 이름: " + student.getStudentName() +
                     ", 등록된 과목: " + student.getStudentSubjects());
+        }
+    }
+
+    // 현재 저장된 과목 목록 출력(테스트용 삭제 처리 요망)
+    public void printSubjects() {
+        System.out.println("현재 저장된 과목 목록 : ");
+        for(Subject subject : subjects) {
+            System.out.println("과목번호: " +subject.getSubjectId()+
+                    ", 과목 이름: " +subject.getSubjectName()+
+                    ", 과목 등급: " + subject.getSubjectType()
+                    );
         }
     }
 }

@@ -7,6 +7,8 @@ public class App {
         // 데이터 저장소 초기화
         data.setInitData();
 
+        data.printSubjects();
+        data.printStudents();
         MainView mainView = new MainView(data);
         try {
             mainView.displayView();
