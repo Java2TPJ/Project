@@ -1,15 +1,16 @@
 package view;
 import data.Data;
-
 import java.util.*;
-import data.Data;
-public class StudentView implements View{
+import module.StudentInfo;
 
+public class StudentView implements View{
     private Data data;
     Scanner sc = new Scanner(System.in);
+    private StudentInfo studentInfo;
 
     public StudentView(Data data) {
         this.data = data;
+        studentInfo = new StudentInfo(data);
     }
     @Override
     public void displayView() {
@@ -31,7 +32,7 @@ public class StudentView implements View{
             switch (i) {
                 case 1 -> {}  // 수강생 등록
                 case 2 -> {} // 수강생 목록 조회
-                case 3 -> {} // 수강생 정보 조회
+                case 3 -> studentInfo.showInfo(); // 수강생 정보 조회
                 case 4 -> {} // 수강생 정보 수정
                 case 5 -> {} // 수강생 삭제
                 case 6 -> {} // 상태별 수강생 목록 조회
