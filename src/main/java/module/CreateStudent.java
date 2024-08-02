@@ -1,6 +1,7 @@
 package module;
 
 import data.Data;
+import model.Student;
 import model.Subject;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class CreateStudent {
 
 
 
-  public void addStudent(){
+  public void studentSelect(){
     List<Subject> subjects = data.getSubjects();
     List<Subject> selectSubjects = new ArrayList<>();
     System.out.print("이름 : ");
@@ -33,9 +34,9 @@ public class CreateStudent {
     boolean[] is_select = {false, false, false, false, false, false, false, false, false};
 
 
-    for(int j=0; j<9; j++){
+    for(int j=0; j<10; j++){
       // 저장된 과목 출력
-      System.out.println(selectSubjects.toString());
+      //System.out.println(selectSubjects.toString());
         // 과목 번호 입력 받음
         System.out.print((j+1) +"번째, 과목 번호 입력 : ");
         int select = sc.nextInt();
@@ -61,19 +62,24 @@ public class CreateStudent {
         if ((eCount >= 3) && (sCount >=2)){ // 최소 필수과목 3개 이상,선택과목 2개 이상 충족하면
           System.out.println("최소 선택 기준을 충족했습니다. 더 수강하시겠습니까?(yes)");
           String answer = sc.next();
-            } else {
-              // 원래 view로 돌아감
-            }
-        } else {
-          // 현재 선택된 과목 타입별 수 안내
-          System.out.println("필수 과목 " +eCount + "개, 선택 과목 "+sCount+ "개 선택되었습니다.");
-        }
+          if(answer.equals("yes")){
 
-        // 다시 넣기
+          } else {
+            // 저장
+            addStudent(name, selectSubjects);
+            return;
+          }
+        }
+      } else {
+        // 현재 선택된 과목 타입별 수 안내
+        System.out.println("필수 과목 " +eCount + "개, 선택 과목 "+sCount+ "개 선택되었습니다.");
       }
     }
+  }
 
-
+  public void addStudent(String name, List<Subject> studentSubjects){
+    Student addStudent = new Student(name, studentSubjects);
+  }
 
   public void printAllSubjects(Data data){
     System.out.println("==================================");
