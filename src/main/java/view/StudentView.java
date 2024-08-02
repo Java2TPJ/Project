@@ -3,13 +3,17 @@ import data.Data;
 
 import java.util.*;
 import data.Data;
+import module.CreateStudent;
+
 public class StudentView implements View{
 
     private Data data;
+    private CreateStudent createStudent;
     Scanner sc = new Scanner(System.in);
 
     public StudentView(Data data) {
         this.data = data;
+        this.createStudent = new CreateStudent(data);
     }
     @Override
     public void displayView() {
@@ -29,7 +33,10 @@ public class StudentView implements View{
             int i = sc.nextInt();
 
             switch (i) {
-                case 1 -> {}  // 수강생 등록
+                case 1 -> {
+                    createStudent.printAllSubjects(data); // 과목 출력
+                    createStudent.studentSelect();
+                }
                 case 2 -> {} // 수강생 목록 조회
                 case 3 -> {} // 수강생 정보 조회
                 case 4 -> {} // 수강생 정보 수정
