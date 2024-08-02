@@ -15,6 +15,7 @@ public class StudentView implements View{
         this.data = data;
         this.createStudent = new CreateStudent(data);
         this.studentInfo = new StudentInfo(data);
+        this.studentsList = new StudentList(data);
     }
     @Override
     public void displayView() {
