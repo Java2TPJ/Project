@@ -55,6 +55,7 @@ public class CreateStore {
         while (true) {
             System.out.print("회차를 입력하세요 (1-10, 종료하려면 0 입력): ");
             int round = sc.nextInt();
+            boolean check = false;
             sc.nextLine(); // 개행 문자 삭제
 
             if (round == 0) {
@@ -66,8 +67,20 @@ public class CreateStore {
 
             // 같은 회차에 점수 넣는 것을 방지 하기 위해서 check 변수에 false값 설정
             // 이미 저장이 되어있을거기 때문에 scores 리스트에서 값들을 가져오고 현재 입력을 받는 회원의 Id와 과목 Id가 일치하는 값을 찾고
-            // 입력받은 round 값이 scores에 존재 하는지 검사 맞다면 check값을 true로 변경
-            boolean check = false;
+            // 입력받은 round 값이 scores에 존재 하는지 검사, 맞다면 check값을 true로 변경
+            if(check == false) {
+                for(Score score : data.getScores()){
+                    if(targetStudent.getStudentId().equals(score.getStudentId()) &&
+                            selectedSubject.getSubjectId().equals(score.getSubjectId()) && round == score.getRound()) {
+                        check = true;
+                    }
+                }
+            }
+
+            if(check == true) {
+                System.out.println("동일한 회차를 입력하였습니다. 재입력해주세요.");
+                continue;
+            }
 
             System.out.print(round + "회차 점수를 입력하세요: ");
             int score = sc.nextInt();
