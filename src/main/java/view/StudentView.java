@@ -8,6 +8,7 @@ public class StudentView implements View{
     private Data data;
     private CreateStudent createStudent;
     private StudentInfo studentInfo;
+    private StudentList studentsList;
     Scanner sc = new Scanner(System.in);
 
     public StudentView(Data data) {
@@ -37,7 +38,9 @@ public class StudentView implements View{
                     createStudent.printAllSubjects(data); // 과목 출력
                     createStudent.studentSelect();
                 }
-                case 2 -> {} // 수강생 목록 조회
+                case 2 -> {
+                    studentsList.printStudentAll();
+                } // 수강생 목록 조회
                 case 3 -> studentInfo.showInfo(); // 수강생 정보 조회
                 case 4 -> {} // 수강생 정보 수정
                 case 5 -> {} // 수강생 삭제
