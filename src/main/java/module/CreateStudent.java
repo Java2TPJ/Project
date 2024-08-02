@@ -70,10 +70,8 @@ public class CreateStudent {
             return;
           }
         }
-      } else {
-        // 현재 선택된 과목 타입별 수 안내
-        System.out.println("필수 과목 " +eCount + "개, 선택 과목 "+sCount+ "개 선택되었습니다.");
       }
+      System.out.println("필수 과목 " +eCount + "개, 선택 과목 "+sCount+ "개 선택되었습니다.");
     }
   }
 
