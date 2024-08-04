@@ -20,7 +20,7 @@ public class StudentInfo {
                     targetStudent = student;
                     System.out.println("학생 번호 : "+student.getStudentId());
                     System.out.println("학생 이름 : "+student.getStudentName());
-                    // System.out.println("학생 상태 : "+student.getState());
+                    System.out.println("학생 상태 : "+student.getState());
                     System.out.print("과목 목록 : ");
                     for(Subject subject : student.getStudentSubjects()) {
                         System.out.print(subject.getSubjectName());
