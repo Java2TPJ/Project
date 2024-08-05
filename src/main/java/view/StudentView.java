@@ -9,6 +9,8 @@ public class StudentView implements View{
     private CreateStudent createStudent;
     private StudentInfo studentInfo;
     private StudentList studentsList;
+    private DeleteStudent deleteStudent; // 추가: DeleteStudent 객체 추가
+    private ReNameStore reNameStore;
     Scanner sc = new Scanner(System.in);
 
     public StudentView(Data data) {
@@ -16,6 +18,8 @@ public class StudentView implements View{
         this.createStudent = new CreateStudent(data);
         this.studentInfo = new StudentInfo(data);
         this.studentsList = new StudentList(data);
+        this.deleteStudent = new DeleteStudent(data);
+        this.reNameStore = new ReNameStore(data);
     }
     @Override
     public void displayView() {
@@ -43,8 +47,8 @@ public class StudentView implements View{
                     studentsList.printStudentAll();
                 } // 수강생 목록 조회
                 case 3 -> studentInfo.showInfo(); // 수강생 정보 조회
-                case 4 -> {} // 수강생 정보 수정
-                case 5 -> {} // 수강생 삭제
+                case 4 -> reNameStore.reName(); // 수강생 정보 수정
+                case 5 -> deleteStudent.deleteStudent();// 수강생 삭제
                 case 6 -> {} // 상태별 수강생 목록 조회
                 case 7 -> flag = false; // 메인 화면 이동
             }
