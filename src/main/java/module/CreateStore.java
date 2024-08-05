@@ -103,16 +103,6 @@ public class CreateStore {
             data.getScores().add(new Score(targetStudent.getStudentId(), selectedSubject.getSubjectId(), round, scoreValue, grade));
 
             System.out.println(round + "회차 점수 " + scoreValue + "점, 등급 " + grade + "이(가) 등록되었습니다.");
-            
-            // 등록된 점수 목록을 출력합니다.
-            System.out.println("등록된 점수 목록:");
-            for (Score score : data.getScores()) {
-                System.out.println("학생 ID: " + score.getStudentId() +
-                                   ", 과목 ID: " + score.getSubjectId() +
-                                   ", 회차: " + score.getRound() +
-                                   ", 점수: " + score.getScore() +
-                                   ", 등급: " + score.getGrade());
-            }
         }
     }
 }
