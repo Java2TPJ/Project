@@ -6,6 +6,7 @@ import model.Score;
 import model.Student;
 import model.Subject;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -104,15 +105,32 @@ public class StudentList {
             }
           }
           System.out.println("----------------------------------");
-          for(int j=0; j<scores.size(); j++){
-            if(scores.get(j).getStudentId().equals(studentId)){
-              if(scores.get(j).getSubjectId().equals(subjectNumber)){
-                System.out.println(scores.get(j).getRound()+"회차, 등급:" + scores.get(j).getGrade());
-              }
-            }
+          // 회차순
+          List<Score> filteredScores = scores.stream()
+              .filter(score -> score.getStudentId().equals(studentId) && score.getSubjectId().equals(subjectNumber))
+              .sorted()
+              .collect(Collectors.toList());
+          for(Score score : filteredScores){
+            System.out.println(score.getRound()+"회차, " + score.getGrade() + "등급");
           }
-          // 해당 과목의 회차별 성적 출력
-          answerNo = false;
+
+
+          // 입력순
+//          for(int j=0; j<scores.size(); j++){
+//            if(scores.get(j).getStudentId().equals(studentId)){
+//              if(scores.get(j).getSubjectId().equals(subjectNumber)){
+//                System.out.println(scores.get(j).getRound()+"회차, 등급:" + scores.get(j).getGrade());
+//              }
+//            }
+//          }
+          //
+          System.out.print("다른 과목의 회차별 등급도 확인하시겠습니까? (yes or no) : ");
+          String answer = sc.nextLine();
+          if(answer.equals("yes")){
+            answerNo = true;
+          } else {
+            answerNo = false;
+          }
         }
       }
       if(targetStudent == null){
