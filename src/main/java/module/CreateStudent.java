@@ -120,7 +120,7 @@ public class CreateStudent {
     List<Subject> subjects = data.getSubjects();
     for(int i=0; i < subjects.size(); i++){
       Subject subject = subjects.get(i);
-      System.out.println((i+1)+". "
+      System.out.println(subject.getSubjectId()+". "
           + subject.getSubjectName() +
           "(" + subject.getSubjectType() + ")");
     }
