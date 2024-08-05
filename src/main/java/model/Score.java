@@ -6,10 +6,10 @@ public class Score {
     private Long subjectId;
     private Long studentId;
     private int round;
-    private int score;
+    private double score;
     private String grade;
 
-    public Score(Long studentId, Long subjectId, int round, int score, String grade) {
+    public Score(Long studentId, Long subjectId, int round, double score, String grade) {
         this.studentId = studentId;
         this.subjectId = subjectId;
         this.round = round;
@@ -41,7 +41,7 @@ public class Score {
         this.round = round;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
