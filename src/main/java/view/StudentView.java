@@ -49,7 +49,7 @@ public class StudentView implements View{
                 case 3 -> studentInfo.showInfo(); // 수강생 정보 조회
                 case 4 -> reNameStore.reName(); // 수강생 정보 수정
                 case 5 -> deleteStudent.deleteStudent();// 수강생 삭제
-                case 6 -> {} // 상태별 수강생 목록 조회
+                case 6 -> {studentsList.stateStudentList();} // 상태별 수강생 목록 조회
                 case 7 -> flag = false; // 메인 화면 이동
             }
         }
