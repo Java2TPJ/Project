@@ -3,6 +3,7 @@ package module;
 
 import data.Data;
 import model.Student;
+import model.Subject;
 
 import java.util.List;
 import java.util.Scanner;
@@ -69,6 +70,33 @@ public class StudentList {
       String answer = sc.next();
       if(answer.equals("yes")){
         answerYes = false;
+      }
+    }
+  }
+
+  // (2-3) 수강생의 특정 과목 회차별 등급 조회
+  public void roundRatingList(){
+    Student targetStudent = null;
+    boolean answerNo = true;
+    List<Subject> subjects = data.getSubjects();
+    while(answerNo){
+      System.out.print("조회할 수강생의 번호를 입력 : ");
+      Long studentId = sc.nextLong();
+      sc.nextLine();
+      for(Student student : data.getStudents()){
+        if(student.getStudentId().equals(studentId)){
+          targetStudent = student;
+          // 해당 수강생의 수강 과목 출력
+          System.out.println();
+
+          targetStudent.getStudentSubjects();
+          System.out.print("조회할 과목 입력 : ");
+          // 해당 과목의 회차별 성적 출력
+          answerNo = false;
+        }
+      }
+      if(targetStudent == null){
+        System.out.println("해당 학생은 존재하지않습니다.");
       }
     }
   }
