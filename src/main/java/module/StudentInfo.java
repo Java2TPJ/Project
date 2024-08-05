@@ -34,7 +34,7 @@ public class StudentInfo {
                 continue;
             }
             System.out.println("");
-            System.out.print("[추가 조회를 원하면 1, 종료를 원할 시 아무 값을 눌러주세요.] :");
+            System.out.print("[추가 조회를 원하면 1, 종료를 원할 시 아무 숫자 값을 눌러주세요.] :");
             select = sc.nextInt();
         } while(select==1);
     }
