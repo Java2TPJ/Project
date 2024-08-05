@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.parseInt;
+
 public class StudentList {
   Data data = new Data();
   Scanner sc = new Scanner(System.in);
@@ -79,7 +81,6 @@ public class StudentList {
   public void roundRatingList(){
     Student targetStudent = null;
     boolean answerNo = true;
-    List<Subject> subjects = data.getSubjects();
     List<Score> scores = data.getScores();
     while(answerNo){
       System.out.print("조회할 수강생의 번호를 입력 : ");
@@ -94,13 +95,20 @@ public class StudentList {
           }
 
           System.out.print("조회할 과목 입력 : ");
-          int subjectNumber = Integer.parseInt(sc.nextLine());
+          Long subjectNumber = sc.nextLong();
+          sc.nextLine();
+          System.out.println("==================================");
+          for (Subject subject1 : data.getSubjects()) {
+            if (subject1.getSubjectId().equals(subjectNumber)) {
+              System.out.println(subject1.getSubjectName());
+            }
+          }
+          System.out.println("----------------------------------");
           for(int j=0; j<scores.size(); j++){
             if(scores.get(j).getStudentId().equals(studentId)){
-              System.out.println(scores.get(j).getStudentId());
-            }
-            if(scores.get(j).getSubjectId().equals(subjectNumber)){
-              System.out.println(scores.get(j).getGrade());
+              if(scores.get(j).getSubjectId().equals(subjectNumber)){
+                System.out.println(scores.get(j).getRound()+"회차, 등급:" + scores.get(j).getGrade());
+              }
             }
           }
           // 해당 과목의 회차별 성적 출력
