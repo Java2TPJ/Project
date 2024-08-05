@@ -2,11 +2,16 @@ package module;
 
 
 import data.Data;
+import model.Score;
 import model.Student;
+import model.Subject;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import static java.lang.Integer.parseInt;
 
 public class StudentList {
   Data data = new Data();
@@ -69,6 +74,67 @@ public class StudentList {
       String answer = sc.next();
       if(answer.equals("yes")){
         answerYes = false;
+      }
+    }
+  }
+
+  // (2-3) 수강생의 특정 과목 회차별 등급 조회
+  public void roundRatingList(){
+    Student targetStudent = null;
+    boolean answerNo = true;
+    List<Score> scores = data.getScores();
+    while(answerNo){
+      System.out.print("조회할 수강생의 번호를 입력 : ");
+      Long studentId = sc.nextLong();
+      sc.nextLine();
+      for(Student student : data.getStudents()){
+        if(student.getStudentId().equals(studentId)){
+          targetStudent = student;
+          // 해당 수강생의 수강 과목 출력
+          for(int i=0; i<targetStudent.getStudentSubjects().size(); i++){
+            System.out.println("("+targetStudent.getStudentSubjects().get(i).getSubjectId()+")"+targetStudent.getStudentSubjects().get(i).getSubjectName());
+          }
+
+          System.out.print("조회할 과목 입력 : ");
+          Long subjectNumber = sc.nextLong();
+          sc.nextLine();
+          System.out.println("==================================");
+          for (Subject subject1 : data.getSubjects()) {
+            if (subject1.getSubjectId().equals(subjectNumber)) {
+              System.out.println(subject1.getSubjectName());
+            }
+          }
+          System.out.println("----------------------------------");
+          // 회차순
+          List<Score> filteredScores = scores.stream()
+              .filter(score -> score.getStudentId().equals(studentId) && score.getSubjectId().equals(subjectNumber))
+              .sorted()
+              .collect(Collectors.toList());
+          for(Score score : filteredScores){
+            System.out.println(score.getRound()+"회차, " + score.getGrade() + "등급");
+          }
+
+
+          // 입력순
+//          for(int j=0; j<scores.size(); j++){
+//            if(scores.get(j).getStudentId().equals(studentId)){
+//              if(scores.get(j).getSubjectId().equals(subjectNumber)){
+//                System.out.println(scores.get(j).getRound()+"회차, 등급:" + scores.get(j).getGrade());
+//              }
+//            }
+//          }
+          //
+          System.out.print("다른 과목의 회차별 등급도 확인하시겠습니까? (yes or no) : ");
+          String answer = sc.nextLine();
+          if(answer.equals("yes")){
+            answerNo = true;
+          } else {
+            answerNo = false;
+          }
+        }
+      }
+      if(targetStudent == null){
+        System.out.println("해당 학생은 존재하지않습니다.");
       }
     }
   }
