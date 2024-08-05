@@ -37,6 +37,13 @@ public class DeleteStudent {
                     break;
                 }
             }
+            Iterator<Score> scoreIterator = data.getScores().iterator();
+            while (scoreIterator.hasNext()) {
+                Score score = scoreIterator.next();
+                if (score.getStudentId().equals(studentId)) {
+                scoreIterator.remove();
+                }
+            }
 
             if (targetStudent == null) {
                 System.out.println("해당 학생이 없습니다.");
