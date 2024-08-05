@@ -42,7 +42,6 @@ public class CreateStore {
         // 등록된 과목 목록을 출력합니다.
         System.out.println("등록된 과목 목록:");
         for (int j = 0; j < subjects.size(); j++) {
-            //System.out.println(subjects.get(j).getSubjectId() + ". " + subjects.get(j).getSubjectName());
             System.out.println((j + 1) + ". " + subjects.get(j).getSubjectName());
         }
         
