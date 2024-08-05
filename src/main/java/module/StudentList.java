@@ -2,6 +2,7 @@ package module;
 
 
 import data.Data;
+import model.Score;
 import model.Student;
 import model.Subject;
 
@@ -79,6 +80,7 @@ public class StudentList {
     Student targetStudent = null;
     boolean answerNo = true;
     List<Subject> subjects = data.getSubjects();
+    List<Score> scores = data.getScores();
     while(answerNo){
       System.out.print("조회할 수강생의 번호를 입력 : ");
       Long studentId = sc.nextLong();
@@ -87,10 +89,20 @@ public class StudentList {
         if(student.getStudentId().equals(studentId)){
           targetStudent = student;
           // 해당 수강생의 수강 과목 출력
-          System.out.println();
+          for(int i=0; i<targetStudent.getStudentSubjects().size(); i++){
+            System.out.println("("+targetStudent.getStudentSubjects().get(i).getSubjectId()+")"+targetStudent.getStudentSubjects().get(i).getSubjectName());
+          }
 
-          targetStudent.getStudentSubjects();
           System.out.print("조회할 과목 입력 : ");
+          int subjectNumber = Integer.parseInt(sc.nextLine());
+          for(int j=0; j<scores.size(); j++){
+            if(scores.get(j).getStudentId().equals(studentId)){
+              System.out.println(scores.get(j).getStudentId());
+            }
+            if(scores.get(j).getSubjectId().equals(subjectNumber)){
+              System.out.println(scores.get(j).getGrade());
+            }
+          }
           // 해당 과목의 회차별 성적 출력
           answerNo = false;
         }
