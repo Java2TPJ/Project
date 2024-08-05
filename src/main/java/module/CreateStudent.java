@@ -28,25 +28,36 @@ public class CreateStudent {
   public void studentSelect(){
     List<Subject> subjects = data.getSubjects();
     List<Subject> selectSubjects = new ArrayList<>();
-    System.out.print("이름 : ");
-    String name = sc.nextLine();
-    String state = "";
 
+    // 이름 입력받음
+    String name = "";
+    boolean validName = false;
+    while(!validName){
+      System.out.print("이름 : ");
+      name = sc.nextLine();
+      if(name == "" || name == "\n"){
+        System.out.println("이름을 입력해주세요.");
+      } else {
+        validName = true;
+        break;
+      }
+    }
+
+    
+    // state 입력받음
     //24-08-04 추가 학생 상태 입력 하고 일치하는지 검증 36 line ~ 53 line
+    String state = "";
     boolean validState = false;
-
     while (!validState) {
       System.out.println("상태 목록: " + String.join(", ", array));
       System.out.print("상태 : ");
       state = sc.nextLine();
-
       for (String i : array) {
         if (state.equals(i)) {
           validState = true;
           break;
         }
       }
-
       if (!validState) {
         System.out.println("일치하지 않습니다. 다시 입력해주세요.");
       }
@@ -62,7 +73,7 @@ public class CreateStudent {
     for(int j=0; j<10; j++){
         // 과목 번호 입력 받음
         System.out.print((j+1) +"번째, 과목 번호 입력 : ");
-        int select = sc.nextInt();
+        int select = Integer.parseInt(sc.nextLine());
           if(select < 0 || select > 10){
             System.out.println("유효하지 않은 과목 번호입니다.");
           } else if(is_select[select - 1] == true){
@@ -103,6 +114,7 @@ public class CreateStudent {
     data.getStudents().add(new Student(name, studentSubjects, state)); // 만든것을 내놔야함
   }
 
+  // 수강 과목 리스트 불러옴
   public void printAllSubjects(Data data){
     System.out.println("==================================");
     List<Subject> subjects = data.getSubjects();
