@@ -9,8 +9,11 @@ public class StudentView implements View{
     private CreateStudent createStudent;
     private StudentInfo studentInfo;
     private StudentList studentsList;
+<<<<<<< HEAD
     private DeleteStudent deleteStudent; // 추가: DeleteStudent 객체 추가
     private ReNameStore reNameStore;
+=======
+>>>>>>> cdfcac348a265ff74d0064826dbbeb2b3e235292
     Scanner sc = new Scanner(System.in);
 
     public StudentView(Data data) {
@@ -18,8 +21,11 @@ public class StudentView implements View{
         this.createStudent = new CreateStudent(data);
         this.studentInfo = new StudentInfo(data);
         this.studentsList = new StudentList(data);
+<<<<<<< HEAD
         this.deleteStudent = new DeleteStudent(data);
         this.reNameStore = new ReNameStore(data);
+=======
+>>>>>>> cdfcac348a265ff74d0064826dbbeb2b3e235292
     }
     @Override
     public void displayView() {
