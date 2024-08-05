@@ -16,12 +16,18 @@ public class DeleteStudent {
     public void deleteStudent() {
         int select = 0;
         do {
+            if (data.getStudents().isEmpty()) {
+                System.out.println("학생 정보가 없습니다.");
+                return;
+            }
+
+            Iterator<Student> iterator = data.getStudents().iterator();
+    
             System.out.print("삭제할 학생 번호를 입력하세요 : ");
             Long studentId = sc.nextLong();
             Student targetStudent = null;
 
             // 학생 찾기 및 삭제
-            Iterator<Student> iterator = data.getStudents().iterator();
             while (iterator.hasNext()) {
                 Student student = iterator.next();
                 if (student.getStudentId().equals(studentId)) {
