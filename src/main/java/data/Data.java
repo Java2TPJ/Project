@@ -41,7 +41,7 @@ public class Data {
         Subject mongoDB = getSubjectByName("MongoDB");
 
         // 강태영 학생 생성 및 과목 설정(테스트용 삭제 처리 예정)
-        Student student = new Student("강태영", List.of(spring, mongoDB));
+        Student student = new Student("강태영", List.of(spring, mongoDB), "Green");
         students.add(student);
     }
 
@@ -135,4 +135,6 @@ public class Data {
                     );
         }
     }
+
+
 }

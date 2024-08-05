@@ -13,6 +13,8 @@ public class CreateStudent {
 
   Scanner sc = new Scanner(System.in);
 
+  String[] array = {"Green", "Red", "Yellow"};
+
 
   public CreateStudent(){}
 
@@ -27,7 +29,30 @@ public class CreateStudent {
     List<Subject> subjects = data.getSubjects();
     List<Subject> selectSubjects = new ArrayList<>();
     System.out.print("이름 : ");
-    String name = sc.next();
+    String name = sc.nextLine();
+    String state = "";
+
+    //24-08-04 추가 학생 상태 입력 하고 일치하는지 검증 36 line ~ 53 line
+    boolean validState = false;
+
+    while (!validState) {
+      System.out.println("상태 목록: " + String.join(", ", array));
+      System.out.print("상태 : ");
+      state = sc.nextLine();
+
+      for (String i : array) {
+        if (state.equals(i)) {
+          validState = true;
+          break;
+        }
+      }
+
+      if (!validState) {
+        System.out.println("일치하지 않습니다. 다시 입력해주세요.");
+      }
+    }
+
+
     int eCount = 0; // 필수과목 선택 수
     int sCount = 0; // 선택과목 선택 수
     // 해당 인덱스가 선택되어있는지 저장
@@ -64,7 +89,8 @@ public class CreateStudent {
 
           } else {
             // 저장
-            addStudent(name, selectSubjects);
+            addStudent(name, selectSubjects, state);
+            System.out.println("[새로운 수강생이 저장되었습니다. 이름 : "+ name+"]");
             return;
           }
         }
@@ -73,8 +99,8 @@ public class CreateStudent {
     }
   }
 
-  public void addStudent(String name, List<Subject> studentSubjects){
-    data.getStudents().add(new Student(name, studentSubjects)); // 만든것을 내놔야함
+  public void addStudent(String name, List<Subject> studentSubjects, String state){
+    data.getStudents().add(new Student(name, studentSubjects, state)); // 만든것을 내놔야함
   }
 
   public void printAllSubjects(Data data){
