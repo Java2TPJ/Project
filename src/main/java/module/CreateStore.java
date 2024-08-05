@@ -88,7 +88,7 @@ public class CreateStore {
 
             // 점수 입력을 받습니다.
             System.out.print(round + "회차 점수를 입력하세요: ");
-            int scoreValue = sc.nextInt();
+            double scoreValue = sc.nextDouble();
             sc.nextLine(); // 개행 문자 삭제
 
             // 점수에 대한 등급을 결정합니다.
