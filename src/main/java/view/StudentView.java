@@ -40,7 +40,6 @@ public class StudentView implements View{
 
             switch (i) {
                 case 1 -> {
-                    createStudent.printAllSubjects(data); // 과목 출력
                     createStudent.studentSelect();
                 }
                 case 2 -> {

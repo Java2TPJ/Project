@@ -114,16 +114,6 @@ public class StudentList {
             System.out.println(score.getRound()+"회차, " + score.getGrade() + "등급");
           }
 
-
-          // 입력순
-//          for(int j=0; j<scores.size(); j++){
-//            if(scores.get(j).getStudentId().equals(studentId)){
-//              if(scores.get(j).getSubjectId().equals(subjectNumber)){
-//                System.out.println(scores.get(j).getRound()+"회차, 등급:" + scores.get(j).getGrade());
-//              }
-//            }
-//          }
-          //
           System.out.print("다른 과목의 회차별 등급도 확인하시겠습니까? (yes or no) : ");
           String answer = sc.nextLine();
           if(answer.equals("yes")){

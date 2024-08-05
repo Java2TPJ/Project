@@ -5,6 +5,7 @@ import model.Student;
 import model.Subject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class CreateStudent {
 
 
   public void studentSelect(){
+    printAllSubjects(data);
     List<Subject> subjects = data.getSubjects();
     List<Subject> selectSubjects = new ArrayList<>();
 
@@ -34,8 +36,8 @@ public class CreateStudent {
     boolean validName = false;
     while(!validName){
       System.out.print("이름 : ");
-      name = sc.nextLine();
-      if(name == "" || name == "\n"){
+      name = sc.nextLine().trim();
+      if(name.isEmpty()){
         System.out.println("이름을 입력해주세요.");
       } else {
         validName = true;
@@ -52,15 +54,11 @@ public class CreateStudent {
       System.out.println("상태 목록: " + String.join(", ", array));
       System.out.print("상태 : ");
       state = sc.nextLine();
-      for (String i : array) {
-        if (state.equals(i)) {
+        if (Arrays.asList(array).contains(state)) {
           validState = true;
-          break;
+        } else {
+          System.out.println("일치하지 않습니다. 다시 입력해주세요.");
         }
-      }
-      if (!validState) {
-        System.out.println("일치하지 않습니다. 다시 입력해주세요.");
-      }
     }
 
 
@@ -92,12 +90,11 @@ public class CreateStudent {
               }
           }
 
-      if (j >= 4){
-        if ((eCount >= 3) && (sCount >=2)){ // 최소 필수과목 3개 이상,선택과목 2개 이상 충족하면
+      if ((j >= 4) && (eCount >= 3) && (sCount >=2)){ // 최소 필수과목 3개 이상,선택과목 2개 이상 충족하면
           System.out.println("최소 선택 기준을 충족했습니다. 더 수강하시겠습니까?(yes)");
-          String answer = sc.next();
+          String answer = sc.nextLine().trim();
           if(answer.equals("yes")){
-
+            continue;
           } else {
             // 저장
             addStudent(name, selectSubjects, state);
@@ -108,7 +105,7 @@ public class CreateStudent {
       }
       System.out.println("필수 과목 " +eCount + "개, 선택 과목 "+sCount+ "개 선택되었습니다.");
     }
-  }
+
 
   public void addStudent(String name, List<Subject> studentSubjects, String state){
     data.getStudents().add(new Student(name, studentSubjects, state)); // 만든것을 내놔야함
