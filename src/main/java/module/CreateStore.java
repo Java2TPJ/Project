@@ -45,7 +45,7 @@ public class CreateStore {
         }
     }
 
-    // 하위 2개는
+    // 하위 2개는 각 파트를 담당하는 메소드
 
     // 과목 선택
     private Subject selectSubject(List<Subject> subjects) throws WrongSubjectChoiceException {

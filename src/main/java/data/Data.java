@@ -128,13 +128,11 @@ public class Data {
     // 현재 저장된 과목 목록 출력(테스트용 삭제 처리 요망)
     public void printSubjects() {
         System.out.println("현재 저장된 과목 목록 : ");
-        for(Subject subject : subjects) {
-            System.out.println("과목번호: " +subject.getSubjectId()+
-                    ", 과목 이름: " +subject.getSubjectName()+
+        for (Subject subject : subjects) {
+            System.out.println("과목번호: " + subject.getSubjectId() +
+                    ", 과목 이름: " + subject.getSubjectName() +
                     ", 과목 등급: " + subject.getSubjectType()
-                    );
+            );
         }
     }
-
-
 }
