@@ -50,7 +50,7 @@ public class Score implements Comparable<Score>{
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
