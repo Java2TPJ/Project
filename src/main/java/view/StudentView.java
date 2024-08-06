@@ -40,12 +40,9 @@ public class StudentView implements View{
 
             switch (i) {
                 case 1 -> {
-                    createStudent.printAllSubjects(data); // 과목 출력
                     createStudent.studentSelect();
                 }
-                case 2 -> {
-                    studentsList.printStudentAll();
-                } // 수강생 목록 조회
+                case 2 -> studentsList.printStudentAll();// 수강생 목록 조회
                 case 3 -> studentInfo.showInfo(); // 수강생 정보 조회
                 case 4 -> reNameStore.reName(); // 수강생 정보 수정
                 case 5 -> deleteStudent.deleteStudent();// 수강생 삭제

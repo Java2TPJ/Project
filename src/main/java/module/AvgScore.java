@@ -8,9 +8,6 @@ import java.util.Scanner;
 public class AvgScore {
     private Data data;
     Scanner sc = new Scanner(System.in);
-    double sumScore = 0;
-    double saveRound = 0;
-    double resultScore;
 
     public AvgScore(Data data) {
         this.data = data;
@@ -25,6 +22,8 @@ public class AvgScore {
         Long subjectId = sc.nextLong();
 
         boolean found = false;
+        double sumScore = 0;
+        int saveRound = 0;
 
         for (Score score : data.getScores()) {
             if (score.getStudentId().equals(studentId) && score.getSubjectId().equals(subjectId)) {
@@ -43,7 +42,7 @@ public class AvgScore {
             return;
         }
 
-        resultScore = sumScore / saveRound;
+        double resultScore = sumScore / saveRound;
         System.out.println("평균 점수: " + resultScore);
 
         // 과목 타입 가져오기
@@ -54,9 +53,9 @@ public class AvgScore {
         if (subject != null) {
             String subjectType = subject.getSubjectType();
             if ("ESSENTIAL".equals(subjectType)) {
-                System.out.println("평균 등급: " + data.EssentialGrade((int) resultScore));
+                System.out.println("평균 등급: " + data.EssentialGrade(resultScore));
             } else if ("SELECT".equals(subjectType)) {
-                System.out.println("평균 등급: " + data.SectGrade((int) resultScore));
+                System.out.println("평균 등급: " + data.SectGrade(resultScore));
             } else {
                 System.out.println("평균 등급을 계산할 수 없습니다.");
             }

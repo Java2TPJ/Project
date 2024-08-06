@@ -2,19 +2,24 @@ package model;
 
 import java.util.*;
 
-public class Score {
+public class Score implements Comparable<Score>{
     private Long subjectId;
     private Long studentId;
     private int round;
-    private int score;
+    private double score;
     private String grade;
 
-    public Score(Long studentId, Long subjectId, int round, int score, String grade) {
+    public Score(Long studentId, Long subjectId, int round, double score, String grade) {
         this.studentId = studentId;
         this.subjectId = subjectId;
         this.round = round;
         this.score = score;
         this.grade = grade;
+    }
+
+    @Override
+    public int compareTo(Score other){
+        return Integer.compare(this.round, other.round);
     }
 
     public Long getSubjectId() {
@@ -41,7 +46,7 @@ public class Score {
         this.round = round;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 

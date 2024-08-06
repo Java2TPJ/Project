@@ -56,21 +56,21 @@ public class Data {
     }
 
     // 필수 과목 등급 반환 메서드
-    public String EssentialGrade(int Score) {
+    public String EssentialGrade(double Score) {
         String Grade;
         if ((Score >= 95) && (Score <= 100)) {
             Grade = "A";
             return Grade;
-        } else if ((Score >= 90) && (Score <= 94)) {
+        } else if ((Score >= 90) && (Score < 95)) {
             Grade = "B";
             return Grade;
-        } else if ((Score >= 80) && (Score <= 89)) {
+        } else if ((Score >= 80) && (Score < 90)) {
             Grade = "C";
             return Grade;
-        } else if ((Score >= 70) && (Score <= 79)) {
+        } else if ((Score >= 70) && (Score < 80)) {
             Grade = "D";
             return Grade;
-        } else if ((Score >= 60) && (Score <= 69)) {
+        } else if ((Score >= 60) && (Score < 70)) {
             Grade = "F";
             return Grade;
         } else {
@@ -80,21 +80,21 @@ public class Data {
     }
 
     // 선택 과목 등급 반환 메서드
-    public String SectGrade(int Score) {
+    public String SectGrade(double  Score) {
         String Grade;
         if ((Score >= 90) && (Score <= 100)) {
             Grade = "A";
             return Grade;
-        } else if ((Score >= 80) && (Score <= 89)) {
+        } else if ((Score >= 80) && (Score < 90)) {
             Grade = "B";
             return Grade;
-        } else if ((Score >= 70) && (Score <= 79)) {
+        } else if ((Score >= 70) && (Score < 80)) {
             Grade = "C";
             return Grade;
-        } else if ((Score >= 60) && (Score <= 69)) {
+        } else if ((Score >= 60) && (Score < 70)) {
             Grade = "D";
             return Grade;
-        } else if ((Score >= 50) && (Score <= 59)) {
+        } else if ((Score >= 50) && (Score < 60)) {
             Grade = "F";
             return Grade;
         } else {
@@ -128,13 +128,11 @@ public class Data {
     // 현재 저장된 과목 목록 출력(테스트용 삭제 처리 요망)
     public void printSubjects() {
         System.out.println("현재 저장된 과목 목록 : ");
-        for(Subject subject : subjects) {
-            System.out.println("과목번호: " +subject.getSubjectId()+
-                    ", 과목 이름: " +subject.getSubjectName()+
+        for (Subject subject : subjects) {
+            System.out.println("과목번호: " + subject.getSubjectId() +
+                    ", 과목 이름: " + subject.getSubjectName() +
                     ", 과목 등급: " + subject.getSubjectType()
-                    );
+            );
         }
     }
-
-
 }
