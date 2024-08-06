@@ -38,17 +38,22 @@ public class ScoreView implements View{
             System.out.println("7. 메인 화면 이동");
             System.out.println("\n==================================");
             System.out.print("번호 입력 : ");
-            int i = sc.nextInt();
-            sc.nextLine(); // 개행 문자 삭제
+            try {
+                int i = sc.nextInt();
+                sc.nextLine(); // 개행 문자 삭제
 
-            switch (i) {
-                case 1 -> createStore.addStore(); // 수강생의 과목별 시험 회차 및 점수 등록
-                case 2 -> updateScore.updateScore(); // 수강생의 과목별 회차 점수 수정
-                case 3 -> studentList.roundRatingList(); // 수강생의 특정 과목 회차별 등급 조회
-                case 4 -> avgScore.avgScore(); // 수강생의 과목별 평균 등급 조회
-                case 5 -> stateGradeInfo.stateGradeInfo();    // 특정 상태 수강생들의 필수 과목 평균 등급 조회
-                case 6 -> data.printScores(); // 전체 점수 목록 조회
-                case 7 -> flag = false; // 메인 화면 이동
+                switch (i) {
+                    case 1 -> createStore.addStore(); // 수강생의 과목별 시험 회차 및 점수 등록
+                    case 2 -> updateScore.updateScore(); // 수강생의 과목별 회차 점수 수정
+                    case 3 -> studentList.roundRatingList(); // 수강생의 특정 과목 회차별 등급 조회
+                    case 4 -> avgScore.avgScore(); // 수강생의 과목별 평균 등급 조회
+                    case 5 -> stateGradeInfo.stateGradeInfo();    // 특정 상태 수강생들의 필수 과목 평균 등급 조회
+                    case 6 -> data.printScores(); // 전체 점수 목록 조회
+                    case 7 -> flag = false; // 메인 화면 이동
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("숫자만 입력해주세요.");
+                sc.nextLine(); // 버퍼 비우기
             }
         }
     }
