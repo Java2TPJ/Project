@@ -15,33 +15,30 @@ public class CreateStore {
 
     // 수강생의 과목별 시험 회차 및 점수 등록
     public void addStore() {
-        while (true) {
-            try {
-                System.out.print("점수를 저장할 학생 번호를 입력하세요 : ");
-                Long studentId = sc.nextLong();
+        try {
+            System.out.print("점수를 저장할 학생 번호를 입력하세요 : ");
+            Long studentId = sc.nextLong();
 
-                // 입력받은 학생 번호에 해당하는 학생 객체를 찾습니다.
-                Student targetStudent = findStudentById(studentId);
+            // 입력받은 학생 번호에 해당하는 학생 객체를 찾습니다.
+            Student targetStudent = findStudentById(studentId);
 
-                // 학생의 과목 목록을 가져옵니다.
-                List<Subject> subjects = getStudentSubjects(targetStudent);
-                System.out.println("등록된 과목 목록:");
-                for (int j = 0; j < subjects.size(); j++) {
-                    System.out.println((j + 1) + ". " + subjects.get(j).getSubjectName());
-                }
-
-                // 점수를 입력할 과목을 입력받습니다.
-                Subject selectedSubject = selectSubject(subjects);
-
-                // 선택한 과목에 대해 회차와 점수 입력을 받습니다.
-                enterScores(targetStudent, selectedSubject);
-
-                break; // 모든 입력이 성공적으로 완료되면 루프를 종료
-            } catch (StudentNotFoundException | EmptyStudentSubjectException | WrongSubjectChoiceException e) {
-                System.out.println(e.getMessage());
-            } catch (Exception e) {
-                System.out.println("예기치 않은 오류가 발생했습니다. 다시 시도해주세요.");
+            // 학생의 과목 목록을 가져옵니다.
+            List<Subject> subjects = getStudentSubjects(targetStudent);
+            System.out.println("등록된 과목 목록:");
+            for (int j = 0; j < subjects.size(); j++) {
+                System.out.println((j + 1) + ". " + subjects.get(j).getSubjectName());
             }
+
+            // 점수를 입력할 과목을 입력받습니다.
+            Subject selectedSubject = selectSubject(subjects);
+
+            // 선택한 과목에 대해 회차와 점수 입력을 받습니다.
+            enterScores(targetStudent, selectedSubject);
+
+        } catch (StudentNotFoundException | EmptyStudentSubjectException | WrongSubjectChoiceException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("예기치 않은 오류가 발생했습니다. 다시 시도해주세요.");
         }
     }
 

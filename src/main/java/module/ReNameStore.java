@@ -36,7 +36,7 @@ public class ReNameStore {
             
             System.out.print("수정할 항목을 입력하세요. (이름:1, 상태:2): ");
             int selectPart = sc.nextInt();
-            sc.nextLine(); // consume newline left by nextInt()
+            sc.nextLine();
         
             if (selectPart == 1) {
                 System.out.print("새로운 이름을 입력하세요: ");
