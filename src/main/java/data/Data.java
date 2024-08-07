@@ -37,12 +37,17 @@ public class Data {
         scores = new ArrayList<>();
 
         // 과목 목록 설정(테스트용 삭제 처리 예정)
+        Subject java = getSubjectByName("Java");
         Subject spring = getSubjectByName("Spring");
         Subject mongoDB = getSubjectByName("MongoDB");
 
         // 강태영 학생 생성 및 과목 설정(테스트용 삭제 처리 예정)
-        Student student = new Student("test1", List.of(spring, mongoDB), "Green");
-        students.add(student);
+        Student student1 = new Student("흥부", List.of(java ,spring, mongoDB), "Green");
+        Student student2 = new Student("홍길", List.of(java ,spring, mongoDB), "Green");
+        Student student3 = new Student("삭제용", List.of(java ,spring, mongoDB), "Red");
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
     }
 
     // 테스트용, 추후 변경해야할듯 이름으로 Subject 객체 가져오기
