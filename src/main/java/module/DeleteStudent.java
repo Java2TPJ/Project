@@ -24,7 +24,7 @@ public class DeleteStudent {
             Long studentId = null;
             boolean isValidInput = false;
 
-            while (!isValidInput) {1
+            while (!isValidInput) {
                 System.out.print("삭제할 학생 번호를 입력하세요 : ");
                 if (sc.hasNextLong()) {
                     studentId = sc.nextLong();

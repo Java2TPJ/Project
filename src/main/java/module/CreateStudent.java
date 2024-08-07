@@ -39,6 +39,8 @@ public class CreateStudent {
       name = sc.nextLine().trim();
       if(name.isEmpty()){
         System.out.println("이름을 입력해주세요.");
+      } else if (containsSpecialCharacters(name)){
+        System.out.println("잘못된 입력입니다. 특수 문자 없이 다시 입력하세요.");
       } else {
         validName = true;
         break;
@@ -122,6 +124,12 @@ public class CreateStudent {
           "(" + subject.getSubjectType() + ")");
     }
     System.out.println("==================================");
+  }
+
+  // 특수 문자 포함 여부를 검사하는 메서드
+  private boolean containsSpecialCharacters(String str) {
+    // 한국어와 영어만 허용
+    return !str.matches("[a-zA-Z가-힣 ]*");
   }
 
 }
